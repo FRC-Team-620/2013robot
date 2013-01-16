@@ -9,7 +9,7 @@ This repository contains the coding for our FIRST robot in the year anno domini 
 * John Hambel(Ikelink27)-sensory leader
     * accelerometer
 * Scott McCabe(superuber27)-sensors
-* Aaron Walsh(Young_Maker)-integrator
+* Aaron Walsh(YoungMaker)-integrator
     * github
 * Lizzy Board(ljboard)-vision/sensors 
     * axis camera
