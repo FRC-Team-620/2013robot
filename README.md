@@ -18,4 +18,5 @@ This repository contains the coding for our FIRST robot in the year anno domini 
     * updating, installing, configuration
 * Mark Almanza(yorkswmr)-driver station/debugging
 * Jake Zgoda(JZgoda98)-vision
+* Ryan Rose(Pikminfan1)-driver station/sensors/vision
 * Cameron Lau(will have one later)-blank for now
