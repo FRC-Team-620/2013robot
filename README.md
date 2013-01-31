@@ -24,10 +24,10 @@ This repository contains the coding for our FIRST robot in the year anno domini 
 OFFICIAL AUTONOMOUS LISTING
 ===========================
 
-*Check preset location
-*drive forward set amount (2-3 feet)
-*rotate 90 deg (gyro)
-*drive forward exact amount (10-12 feet?)
-*reset gyro 
-*rotate and aim (camera & gryo) to preset target.
-*fire all three frizbees
+* Check preset location
+* drive forward set amount (2-3 feet)
+* rotate 90 deg (gyro)
+* drive forward exact amount (10-12 feet?)
+* reset gyro 
+* rotate and aim (camera & gryo) to preset target.
+* fire all three frizbees
