@@ -1,6 +1,0 @@
-MIDlet-Name: 2013 Official Robot Code
-MIDlet-Version: 1.0.0
-MIDlet-Vendor: FIRST
-MIDlet-1: MainController, , edu.wpi.first.wpilibj.templates.MainController
-MicroEdition-Profile: IMP-1.0
-MicroEdition-Configuration: CLDC-1.1
