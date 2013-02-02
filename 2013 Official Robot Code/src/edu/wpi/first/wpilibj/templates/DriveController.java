@@ -1,6 +1,8 @@
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Timer;
 
 /*
  * To change this template, choose Tools | Templates
@@ -14,6 +16,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 public class DriveController {
  
     RobotDrive robot = null;
+    
     public DriveController(int leftChannel, int rightChannel) {
         robot = new RobotDrive(leftChannel, rightChannel);//changable
     } 
@@ -55,10 +58,50 @@ public class DriveController {
       robot.tankDrive((left*sensitivity), (right*sensitivity)); //controls tank drive
     }
     
-    public void driveDistance(double distance, double speed) {
-        //TODO: PID or feedback loop that use encoders to travel a set distance at a set speed and brake.
+    public void driveDistance(int distance, double speed) { //TODO: check surroundings using ultrasonic sensors
+       robot.tankDrive(0,0);
+       Encoder encoder1 = Sensors.encoder1;
+       Encoder encoder2 = Sensors.encoder2;
+       encoder1.reset();
+       encoder2.reset();
+       double cDistance = 0; //current distance
+       while((Math.abs(distance) - Math.abs(cDistance)) < 0.5) { //<-- tweak final stop value
+           
+           if( (distance - cDistance) <= distance*0.75) {
+             double cSpeed = (distance - cDistance)/distance; //handles stopping
+             robot.tankDrive(cSpeed, cSpeed);
+           }
+           
+           else {
+             robot.tankDrive(speed, speed);
+           }
+           cDistance = (encoder1.getDistance()+encoder2.getDistance())/2;
+           Timer.delay(0.05);
+       }
+       robot.tankDrive(0,0); //STAHP
+       encoder1.reset();
+       encoder2.reset();
     }
-
+    
+    public void rotate(double angle) {
+        robot.tankDrive(0,0);
+        double cAngle = 0;
+        
+        Sensors.gyro.reset();
+        while(Math.abs(cAngle) < angle) {
+            if(angle > 0) {
+                robot.tankDrive(0.3, -0.3);
+             }
+            else {
+                robot.tankDrive(-0.3, 0.3);
+            }
+            cAngle = Sensors.gyro.getAngle();
+        }
+        
+        robot.tankDrive(0,0);
+        
+        Sensors.gyro.reset();
+    }
 
 
 }
