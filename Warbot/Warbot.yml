@@ -128,6 +128,26 @@ Children:
           name: Input Channel (Analog)
           validators: &id006 [AnalogInput]
           value: '2'
+    - Name: THIS DOES NOT WORK
+      Base: Accelerometer
+      Children: []
+      Properties:
+        Zero G Volts: !!robotbuilder.data.properties.DoubleProperty {default: 2.5,
+          name: Zero G Volts, validators: null, value: 2.5}
+        Volts Per G: !!robotbuilder.data.properties.DoubleProperty {default: '1',
+          name: Volts Per G, validators: null, value: 1.0}
+        Input Module (Analog): !!robotbuilder.data.properties.ChoicesProperty
+          choices: ['1', '2']
+          default: '1'
+          name: Input Module (Analog)
+          validators: [AnalogInput]
+          value: '1'
+        Input Channel (Analog): !!robotbuilder.data.properties.ChoicesProperty
+          choices: ['1', '2', '3', '4', '5', '6', '7', '8']
+          default: '1'
+          name: Input Channel (Analog)
+          validators: [AnalogInput]
+          value: '5'
     - Name: Right Ultrasonic
       Base: Analog Input
       Children: []
@@ -736,8 +756,7 @@ Properties:
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
     name: Autonomous Command, type: Command, validators: null, value: Autonomous Command}
   Wiring File: !!robotbuilder.data.properties.FileProperty {default: '', extension: html,
-    folder: false, name: Wiring File, validators: null, value: 'C:\Users\mkadonoff\Documents\FIRST
-      2013\warbot.html'}
+    folder: false, name: Wiring File, validators: null, value: 'C:\Users\Warbots\Desktop\warbot.html'}
   C++ Windriver Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Windriver\workspace',
     extension: null, folder: true, name: C++ Windriver Workspace, validators: null,
     value: 'C:\Windriver\workspace'}
@@ -751,6 +770,6 @@ Properties:
     validators: null, value: 0}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
-  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\mkadonoff\NetBeansProjects',
+  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Warbots\NetBeansProjects',
     extension: null, folder: true, name: Java Project Directory, validators: null,
     value: 'C:\Users\mkadonoff\Documents\GitHub'}
