@@ -7,6 +7,12 @@ Children:
 - Name: Subsystems
   Base: Subsystems
   Children:
+  - Name: Vision
+    Base: Subsystem
+    Children: []
+    Properties:
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
   - Name: Chassis
     Base: PID Subsystem
     Children:
@@ -286,6 +292,28 @@ Children:
   - Name: Shooter
     Base: Subsystem
     Children:
+    - Name: kicker motor
+      Base: Speed Controller
+      Children: []
+      Properties:
+        Output Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id009
+          default: '1'
+          name: Output Module (Digital)
+          validators: *id010
+          value: '1'
+        Type: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id011
+          default: Victor
+          name: Type
+          validators: null
+          value: Victor
+        Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id012
+          default: '1'
+          name: Output Channel (PWM)
+          validators: *id013
+          value: '6'
     - Name: Motor 1
       Base: Speed Controller
       Children: []
