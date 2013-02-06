@@ -37,5 +37,17 @@ public class PickupShaft extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    
+    public void forward(){
+        motor.set(.4);
+    }
+    
+    public void backwards(){
+        motor.set(-.4);
+    }
+    
+    public void stop(){
+        motor.set(0);
+    }
 }
 
