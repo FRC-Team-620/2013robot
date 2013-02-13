@@ -10,6 +10,8 @@
 package org.usfirst.frc0.Warbot;
     
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.Encoder.PIDSourceParameter;
 import edu.wpi.first.wpilibj.can.*;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import java.util.Vector;
@@ -27,6 +29,8 @@ public class RobotMap {
     public static Gyro chassisGyro;
     public static AnalogChannel chassisLeftUltrasonic;
     public static AnalogChannel chassisRightUltrasonic;
+    public static Encoder chassisLeftEncoder;
+    public static Encoder chassisRightEncoder;
     public static SpeedController elevatorMotor;
     public static AnalogChannel elevatorPot;
     public static SpeedController shooterkickermotor;
@@ -62,6 +66,16 @@ public class RobotMap {
         chassisRightUltrasonic = new AnalogChannel(1, 3);
 	LiveWindow.addSensor("Chassis", "Right Ultrasonic", chassisRightUltrasonic);
         
+        chassisLeftEncoder = new Encoder(1, 1, 1, 2, false, EncodingType.k4X);
+	LiveWindow.addSensor("Chassis", "LeftEncoder", chassisLeftEncoder);
+        chassisLeftEncoder.setDistancePerPulse(1.0);
+        chassisLeftEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
+        chassisLeftEncoder.start();
+        chassisRightEncoder = new Encoder(1, 3, 1, 4, false, EncodingType.k4X);
+	LiveWindow.addSensor("Chassis", "RightEncoder", chassisRightEncoder);
+        chassisRightEncoder.setDistancePerPulse(1.0);
+        chassisRightEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
+        chassisRightEncoder.start();
         elevatorMotor = new Jaguar(1, 10);
 	LiveWindow.addActuator("Elevator", "Motor", (Jaguar) elevatorMotor);
         

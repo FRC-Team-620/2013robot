@@ -9,7 +9,9 @@
 // it from being updated in th future.
 package org.usfirst.frc0.Warbot.commands;
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc0.Warbot.OI;
 import org.usfirst.frc0.Warbot.Robot;
+import org.usfirst.frc0.Warbot.RobotMap;
 /**
  *
  */
@@ -27,6 +29,7 @@ public class  DriveWithJoysticks extends Command {
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        Robot.chassis.DriveWithJoysticks(Robot.oi.getLeftJoystick(), Robot.oi.getRightJoystick());
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
@@ -34,6 +37,7 @@ public class  DriveWithJoysticks extends Command {
     }
     // Called once after isFinished returns true
     protected void end() {
+        Robot.chassis.stop();
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
