@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.image.NIVision.MeasurementType;
 import edu.wpi.first.wpilibj.image.NIVision.Rect;
 import edu.wpi.first.wpilibj.image.NIVisionException;
 import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc0.Warbot.Robot;
 /*package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.SimpleRobot;
 import edu.wpi.first.wpilibj.Timer;
@@ -60,60 +62,64 @@ public class Scores {
         double aspectRatioOuter;
         double xEdge;
         double yEdge;
+}
+    public void aim() {
+       double[] offsets = calculateOffsetAngle(false);
+            Robot.chassis.turn((VIEW_ANGLE/2)*offsets[0]);
+            Robot.elevator.adjustElevator((VIEW_ANGLE/2)*offsets[1]);
     }
-    public double calculateOffsetAngle(double offsetX, double offsetY) {
+    public double[] calculateOffsetAngle(boolean middle) { //gives array. index 0 = x, index 1 = y
+        double offsets[] = new double[1]; 
             try {
                 //assuming the target is in frame
-                //ColorImage image = camera.getImage();     // comment if using stored images
-                ColorImage image = camera.getImage();                           // next 2 lines read image from flash on cRIO
-                //image = new RGBImage("/testImage.jpg");		// get the sample image from the cRIO flash
-                BinaryImage thresholdImage = image.thresholdHSV(60, 100, 90, 255, 20, 255);   // keep only red objects
-                
-                //thresholdImage.write("/threshold.bmp");
+                ColorImage image = camera.getImage();                  
+                BinaryImage thresholdImage = image.thresholdHSV(60, 100, 90, 255, 20, 255);   // keep only color objects
                 BinaryImage convexHullImage = thresholdImage.convexHull(false);          // fill in occluded rectangles
-                //convexHullImage.write("/convexHull.bmp");
-                BinaryImage filteredImage = convexHullImage.particleFilter(cc);  
+                BinaryImage filteredImage = convexHullImage.particleFilter(cc);  //particle filters
                 
-                Scores scores[] = new Scores[filteredImage.getNumberParticles()];
-                    ParticleAnalysisReport report;
+                Scores scores[] = new Scores[filteredImage.getNumberParticles()]; //score array
+                
+                ParticleAnalysisReport report;
                 for (int i = 0; i < scores.length; i++) {
-                    scores[i] = new Scores();
-                    report  = filteredImage.getParticleAnalysisReport(i);
-                    
+                    scores[i] = new Scores(); //adds new score to score array
+                    report  = filteredImage.getParticleAnalysisReport(i); 
+                    //Handles scoring:
                     scores[i].rectangularity = scoreRectangularity(report);
                     scores[i].aspectRatioOuter = scoreAspectRatio(filteredImage,report, i, true);
                     scores[i].aspectRatioInner = scoreAspectRatio(filteredImage, report, i, false);
                     scores[i].xEdge = scoreXEdge(thresholdImage, report);
                     scores[i].yEdge = scoreYEdge(thresholdImage, report);
-        /*            if(scoreCompare(scores[i], false))
-                    {
-                      System.out.println("particle: " + i + "is a High Goal  centerX: " + report.center_mass_x_normalized + "centerY: " + report.center_mass_y_normalized);
-			System.out.println("Distance: " + computeDistance(thresholdImage, report, i, false));
-                    } else if (scoreCompare(scores[i], true)) {
-			System.out.println("particle: " + i + "is a Middle Goal  centerX: " + report.center_mass_x_normalized + "centerY: " + report.center_mass_y_normalized);
-			System.out.println("Distance: " + computeDistance(thresholdImage, report, i, true));
-                    } else {
-                        System.out.println("particle: " + i + "is not a goal  centerX: " + report.center_mass_x_normalized + "centerY: " + report.center_mass_y_normalized);
+                    if(scoreCompare(scores[i], middle)) {
+                           printParticle(middle, scores[i]);
+                           offsets[0] = report.center_mass_x_normalized;
+                           offsets[1] = report.center_mass_y_normalized;
+                           
+                                 filteredImage.free();
+                                 convexHullImage.free();
+                                 thresholdImage.free();
+                                 image.free();
+                                 
+                           return offsets;
                     }
-			System.out.println("rect: " + scores[i].rectangularity + "ARinner: " + scores[i].aspectRatioInner);
-			System.out.println("ARouter: " + scores[i].aspectRatioOuter + "xEdge: " + scores[i].xEdge + "yEdge: " + scores[i].yEdge);	
-                    }
-*/
-                    offsetX = report.center_mass_x_normalized;
-                    offsetY = report.center_mass_y_normalized;
                 }                    
               
-                filteredImage.free();
-                convexHullImage.free();
-                thresholdImage.free();
-                image.free();
-                return 0;
+                
             } catch (NIVisionException ex) {
                 ex.printStackTrace();
             }  catch (AxisCameraException ex) {
                 ex.printStackTrace();
             }
-        return -1;
+            offsets[0] = 0;
+            offsets[1] = 0;
+           return offsets;
+    }
+    public void printParticle(boolean middle, Scores score) {
+         SmartDashboard.putBoolean("middle target?", middle);
+         SmartDashboard.putNumber("Aspect ratio inner", score.aspectRatioInner);
+         SmartDashboard.putNumber("Aspect ratio inner", score.aspectRatioOuter);
+         SmartDashboard.putNumber("Rectangularity", score.rectangularity);
+         SmartDashboard.putNumber("xEdge", score.xEdge);
+         SmartDashboard.putNumber("yEdge", score.yEdge);
     }
     
      double computeDistance (BinaryImage image, ParticleAnalysisReport report, int particleNumber, boolean outer) throws NIVisionException {
