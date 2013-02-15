@@ -12,12 +12,12 @@
 package org.usfirst.frc0.Warbot.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
- *
- */
 public class AutonomousCommand1 extends CommandGroup {
     
     public  AutonomousCommand1() {
+       addSequential(new Drive(50.0));
+      // addSequential(new Turn(35.0));
+       
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

@@ -64,8 +64,9 @@ public class Scores {
         double yEdge;
 }
     public void aim() {
+        //Insert Boolean Packet Here
        double[] offsets = calculateOffsetAngle(false);
-            Robot.chassis.turn((VIEW_ANGLE/2)*offsets[0]);
+            Robot.chassisrotate.turn((VIEW_ANGLE/2)*offsets[0]);
             Robot.elevator.adjustElevator((VIEW_ANGLE/2)*offsets[1]);
     }
     public double[] calculateOffsetAngle(boolean middle) { //gives array. index 0 = x, index 1 = y
