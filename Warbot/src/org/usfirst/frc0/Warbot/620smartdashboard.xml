@@ -1,0 +1,198 @@
+<xml version="1.0">
+<dashboard>
+	<widget field="Scheduler" type="Scheduler" class="edu.wpi.first.smartdashboard.gui.elements.Scheduler">
+		<location x="224" y="0"/>
+	</widget>
+	<widget field="Chassis" type="PIDSubsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
+		<location x="16" y="125"/>
+		<width>211</width>
+	</widget>
+	<widget field="Pickup Shaft Reverse" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="317" y="238"/>
+	</widget>
+	<widget field="Elevate With Joysticks" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="185" y="384"/>
+	</widget>
+	<widget field="Autonomous Command 1" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="313" y="140"/>
+	</widget>
+	<widget field="Start Pickup Belt" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="181" y="489"/>
+	</widget>
+	<widget field="Shoot Frisbee" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="367" y="440"/>
+	</widget>
+	<widget field="Aim Frisbee" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="188" y="438"/>
+	</widget>
+	<widget field="Drive" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="13" y="166"/>
+	</widget>
+	<widget field="Stop Pickup Belt" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="367" y="484"/>
+	</widget>
+	<widget field="Pickup Shaft Forward" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="128" y="240"/>
+	</widget>
+	<widget field="Climber Down" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="341" y="541"/>
+	</widget>
+	<widget field="Autonomous Mode Chooser" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="304" y="32"/>
+	</widget>
+	<widget field="Climber Up" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="192" y="541"/>
+	</widget>
+	<widget field="Autonomous Command 2" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="311" y="179"/>
+	</widget>
+	<widget field="Turn" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="13" y="208"/>
+	</widget>
+</dashboard>
+<live-window>
+	<widget field="Pickup Belt" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<widget field="Motor" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="20"/>
+			<height>85</height>
+			<width>293</width>
+		</widget>
+		<location x="19" y="277"/>
+		<width>305</width>
+		<height>112</height>
+	</widget>
+	<widget field="Chassis rotate" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<widget field="Gyro" type="Gyro" class="edu.wpi.first.smartdashboard.gui.elements.Compass">
+			<location x="6" y="20"/>
+			<height>150</height>
+			<width>250</width>
+		</widget>
+		<widget field="PIDSubsystem Controller" type="PIDController" class="edu.wpi.first.smartdashboard.gui.elements.PIDEditor">
+			<location x="6" y="170"/>
+			<height>136</height>
+			<width>250</width>
+		</widget>
+		<location x="1072" y="21"/>
+		<width>262</width>
+		<height>313</height>
+	</widget>
+	<widget field="Climber" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<widget field="Motor" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="20"/>
+			<height>46</height>
+			<width>293</width>
+		</widget>
+		<widget field="Limit" type="Digital Input" class="edu.wpi.first.smartdashboard.livewindow.elements.DigitalInputDisplay">
+			<location x="6" y="66"/>
+			<height>20</height>
+			<width>293</width>
+		</widget>
+		<location x="13" y="102"/>
+		<width>305</width>
+		<height>93</height>
+	</widget>
+	<widget field="Shooter" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<widget field="Motor 3" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="20"/>
+			<height>46</height>
+			<width>293</width>
+		</widget>
+		<widget field="kicker motor" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="66"/>
+			<height>46</height>
+			<width>293</width>
+		</widget>
+		<widget field="Motor 1" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="112"/>
+			<height>46</height>
+			<width>293</width>
+		</widget>
+		<widget field="Motor 2" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="158"/>
+			<height>46</height>
+			<width>293</width>
+		</widget>
+		<location x="339" y="28"/>
+		<width>305</width>
+		<height>211</height>
+	</widget>
+	<widget field="Chassis" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<widget field="Right Ultrasonic" type="Analog Input" class="edu.wpi.first.smartdashboard.livewindow.elements.SingleNumberDisplay">
+			<location x="6" y="20"/>
+			<height>20</height>
+			<width>259</width>
+		</widget>
+		<widget field="Gyro" type="Gyro" class="edu.wpi.first.smartdashboard.gui.elements.Compass">
+			<location x="6" y="40"/>
+			<height>145</height>
+			<width>259</width>
+		</widget>
+		<widget field="Speed Controller 1" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="185"/>
+			<height>46</height>
+			<width>259</width>
+		</widget>
+		<widget field="LeftEncoder" type="Quadrature Encoder" class="edu.wpi.first.smartdashboard.livewindow.elements.EncoderDisplay">
+			<location x="6" y="231"/>
+			<height>98</height>
+			<width>259</width>
+		</widget>
+		<widget field="RightEncoder" type="Quadrature Encoder" class="edu.wpi.first.smartdashboard.livewindow.elements.EncoderDisplay">
+			<location x="6" y="329"/>
+			<height>98</height>
+			<width>259</width>
+		</widget>
+		<widget field="Speed Controller 2" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="427"/>
+			<height>46</height>
+			<width>259</width>
+		</widget>
+		<widget field="PIDSubsystem Controller" type="PIDController" class="edu.wpi.first.smartdashboard.gui.elements.PIDEditor">
+			<location x="6" y="473"/>
+			<height>136</height>
+			<width>259</width>
+		</widget>
+		<widget field="Left Ultrasonic" type="Analog Input" class="edu.wpi.first.smartdashboard.livewindow.elements.SingleNumberDisplay">
+			<location x="6" y="609"/>
+			<height>20</height>
+			<width>259</width>
+		</widget>
+		<location x="701" y="22"/>
+		<width>271</width>
+		<height>636</height>
+	</widget>
+	<widget field="Elevator" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<widget field="PIDSubsystem Controller" type="PIDController" class="edu.wpi.first.smartdashboard.gui.elements.PIDEditor">
+			<location x="6" y="20"/>
+			<height>136</height>
+			<width>293</width>
+		</widget>
+		<widget field="Pot" type="Analog Input" class="edu.wpi.first.smartdashboard.livewindow.elements.SingleNumberDisplay">
+			<location x="6" y="156"/>
+			<height>20</height>
+			<width>293</width>
+		</widget>
+		<widget field="Motor" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="176"/>
+			<height>46</height>
+			<width>293</width>
+		</widget>
+		<location x="1028" y="383"/>
+		<width>305</width>
+		<height>229</height>
+	</widget>
+	<widget field="Pickup Shaft" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<widget field="Motor" type="Speed Controller" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
+			<location x="6" y="20"/>
+			<height>46</height>
+			<width>293</width>
+		</widget>
+		<location x="21" y="405"/>
+		<width>305</width>
+		<height>73</height>
+	</widget>
+</live-window>
+	<hidden field="Slider 1"/>
+	<hidden field="Checkbox 2"/>
+	<hidden field="Checkbox 1"/>
+</xml>
