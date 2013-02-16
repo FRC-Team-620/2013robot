@@ -11,6 +11,7 @@
 
 package org.usfirst.frc0.Warbot.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc0.Warbot.Robot;
 
 public class AutonomousCommand1 extends CommandGroup {
     
@@ -34,5 +35,6 @@ public class AutonomousCommand1 extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+        //Robot.chassis.drive(60);
     }
 }

@@ -13,19 +13,7 @@ import edu.wpi.first.wpilibj.image.NIVisionException;
 import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc0.Warbot.Robot;
-/*package edu.wpi.first.wpilibj.templates;
-import edu.wpi.first.wpilibj.SimpleRobot;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.camera.AxisCamera;
-import edu.wpi.first.wpilibj.camera.AxisCameraException;
-import edu.wpi.first.wpilibj.image.*;
-import edu.wpi.first.wpilibj.image.NIVision.MeasurementType;
-import edu.wpi.first.wpilibj.image.NIVision.Rect;
-    */
-/*package org.usfirst.frc0.Warbot.subsystems;
-import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc0.Warbot.Robot;
-*/
+
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 /**
@@ -99,7 +87,7 @@ public class Scores {
                                  convexHullImage.free();
                                  thresholdImage.free();
                                  image.free();
-                                 
+                           System.out.println("vision");      
                            return offsets;
                     }
                 }                    
